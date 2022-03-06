@@ -4,7 +4,7 @@ public class ArrayOperations {
 
     public static void main(String[] args) {
 
-        int[] arr = new int[]{1,2,3,4,5};
+        int[] arr = new int[]{1, 2, 3, 4, 5};
         int position = 5, element = 6;
 //        insert(arr, element, position);
         delete(arr, position);
@@ -27,12 +27,12 @@ public class ArrayOperations {
     }
 
     public static void delete(int[] arr, int position) {
-        for (int i = position-1; i < arr.length-1; i++) {
-            arr[i] = arr[i+1];
+        for (int i = position - 1; i < arr.length - 1; i++) {
+            arr[i] = arr[i + 1];
             printArray(arr);
         }
         System.out.println("Output");
-        for (int i = 0;i<arr.length-1;i++) {
+        for (int i = 0; i < arr.length - 1; i++) {
             System.out.print(arr[i] + " ");
         }
         System.out.println();
