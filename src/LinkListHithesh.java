@@ -112,7 +112,7 @@ public class LinkListHithesh {
         LinkListHithesh llist = new LinkListHithesh();
         llist.push(6);
         llist.push(8);
-        llist.append(7);
+//        llist.append(7);
         llist.printlist();
     }
 
