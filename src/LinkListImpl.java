@@ -40,15 +40,14 @@ public class LinkListImpl {
         last.next = newNode;
     }
 
-    public void printLinky() {
-        Node node = head;
-        if (node == null) {
+    public void printLinky(Node myHead) {
+        if (myHead == null) {
             System.out.println("Link list is empty");
             return;
         }
-        while (node != null) {
-            System.out.print(node.data + " ");
-            node = node.next;
+        while (myHead != null) {
+            System.out.print(myHead.data + " ");
+            myHead = myHead.next;
         }
         System.out.println();
     }
@@ -91,20 +90,66 @@ public class LinkListImpl {
 
     }
 
-    public void reverseLinkList() {
+    public Node reverseLinkList(Node myhead) {
         Node prev = null, next;
-        Node current = head;
-        int i = 0;
+        Node current = myhead;
 
         while (current != null) {
-//            System.out.println("Iteration "+i);
             next = current.next;
             current.next = prev;
             prev = current;
             current = next;
         }
-        head = prev;
+        myhead = prev;
 
+
+        return myhead;
+
+
+    }
+
+    public boolean isPalindrome(Node Myhead) {
+
+        Node reverseTemp =reverseLinkList(Myhead);
+        printLinky(Myhead);
+        printLinky(reverseTemp);
+
+
+        while (Myhead != null) {
+            if (Myhead.data == reverseTemp.data) {
+                Myhead = Myhead.next;
+                reverseTemp = reverseTemp.next;
+            } else {
+                return false;
+            }
+        }
+
+        return true;
+
+    }
+
+    public void getMiddle() {
+        Node slow = head, fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        System.out.println("Middle element " + slow.data);
+    }
+
+    public boolean detectLoop() {
+        Node slow = head, fast = head;
+        while (slow != null && fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow.data == fast.data) {
+                return true;
+            }
+        }
+
+        return false;
 
     }
 
@@ -116,10 +161,12 @@ public class LinkListImpl {
         llist.append(3, llist.head);
         llist.append(4, llist.head);
         llist.append(5, llist.head);
-        llist.printLinky();
-        System.out.println("The size of the list = " + llist.getSize(llist.head));
-        llist.reverseLinkList();
-        llist.printLinky();
+        llist.append(6, llist.head);
+
+        Node temp = llist.head;
+
+       llist.isPalindrome(temp);
+
     }
 
 }

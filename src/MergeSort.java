@@ -1,66 +1,75 @@
-public class MergeSort {
-
-    static int[] arr = new int[]{12, 11, 13, 5, 6, 7};
-    public static void main(String[] args) {
-        sortArray(0, arr.length-1);
-        for (int i : arr)
-        {
-            System.out.print(" "+i);
-        }
-    }
-
-    public static void sortArray(int low, int high) {
+class MergeSortImpl {
+    public void sort(int[] arr, int low, int high) {
         if (low < high) {
-//            System.out.println("If Low "+low+" High "+high);
-
-            int mid = (low+high)/2;
-            sortArray(low, mid);
-            sortArray(mid + 1, high);
-            merge(arr , low, mid, high);
-        } else {
-//            System.out.println("Else Low "+low);
+            int mid = (low + high) / 2;
+            sort(arr, low, mid);
+            sort(arr, mid + 1, high);
+            merge(arr, low, mid, high);
         }
     }
 
-    private static void merge(int[] arr, int low, int mid, int high) {
-        int n1 = mid - low + 1;
-        int n2 = high - mid;
-        int[] L1 = new int[n1];
-        int[] L2 = new int[n2];
+    public void merge(int[] arr, int low, int mid, int high) {
+        int l1 = mid - low + 1;
+        int l2 = high - mid;
 
-        for (int i = 0; i < n1; ++i) {
-            L1[i] = arr[low+i];
+        int[] L = new int[l1];
+        int[] R = new int[l2];
+
+        for (int i = 0; i < l1; ++i) {
+            L[i] = arr[i + low];
         }
-        for (int j = 0; j < n2; ++j) {
-            L2[j] = arr[mid + 1 + j];
+        for (int j = 0; j < l2; ++j) {
+            R[j] = arr[mid + 1 + j];
         }
-        int i = 0, j = 0, k = low;
-        while (i < n1 && j < n2) {
-            if (L1[i] <= L2[j]) {
-                arr[k] = L1[i];
+
+        int i = 0;
+        int j = 0;
+        int k = low;
+
+        while (i < l1 && j < l2) {
+            if (L[i] <= R[j]) {
+                arr[k] = L[i];
                 i++;
             } else {
-                arr[k] = L2[j];
+                arr[k] = R[j];
                 j++;
             }
             k++;
         }
-        while (i < n1) {
-            arr[k] = L1[i];
+
+        while (i < l1) {
+            arr[k] = L[i];
             i++;
             k++;
         }
-        while (j < n2) {
-            arr[k] = L2[j];
+
+        while (j < l2) {
+            arr[k] = R[j];
             j++;
             k++;
         }
-        System.out.println("Merging low " + low + " to mid " + mid + " to high " + high);
-        for (int d : arr)
-        {
-            System.out.print(" "+d);
+
+//        System.out.println("For low " + low + " mid " + mid + " high " + high);
+//        printArray(arr);
+    }
+
+    public void printArray(int[] arr) {
+        for (int s : arr) {
+            System.out.print(s + " ");
         }
         System.out.println();
+    }
+
+}
+
+public class MergeSort
+{
+    public static void main(String[] args) {
+        int[] arr = new int[]{3,1,2,5,4};
+
+        MergeSortImpl impl = new MergeSortImpl();
+        impl.sort(arr, 0, arr.length - 1);
+        impl.printArray(arr);
 
     }
 }
