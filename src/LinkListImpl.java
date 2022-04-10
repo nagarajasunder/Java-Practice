@@ -86,9 +86,20 @@ public class LinkListImpl {
             return;
         }
         prev.next = temp.next;
-
-
     }
+
+    public void removeDuplicates() {
+        Node temp = head;
+        int tempValue = -101;
+        while (temp != null) {
+            if (temp.data == tempValue) {
+                deleteValue(tempValue);
+            }
+            tempValue = temp.data;
+            temp = temp.next;
+        }
+    }
+
 
     public Node reverseLinkList(Node myhead) {
         Node prev = null, next;
@@ -110,7 +121,7 @@ public class LinkListImpl {
 
     public boolean isPalindrome(Node Myhead) {
 
-        Node reverseTemp =reverseLinkList(Myhead);
+        Node reverseTemp = reverseLinkList(Myhead);
         printLinky(Myhead);
         printLinky(reverseTemp);
 
@@ -157,15 +168,15 @@ public class LinkListImpl {
         LinkListImpl llist = new LinkListImpl();
 
         llist.push(1);
+        llist.append(1, llist.head);
         llist.append(2, llist.head);
         llist.append(3, llist.head);
-        llist.append(4, llist.head);
-        llist.append(5, llist.head);
+        llist.append(3, llist.head);
         llist.append(6, llist.head);
 
-        Node temp = llist.head;
-
-       llist.isPalindrome(temp);
+        llist.printLinky(llist.head);
+        llist.removeDuplicates();
+        llist.printLinky(llist.head);
 
     }
 

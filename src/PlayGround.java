@@ -1,11 +1,22 @@
 class Solution {
+    public static boolean backspaceCompare(String s, String t) {
 
+        return removeBackSpace(s).equals(removeBackSpace(t));
+    }
+
+    public static String removeBackSpace(String str) {
+        StringBuilder ns = new StringBuilder();
+        for (char c : str.toCharArray()) {
+            if (c != '#') {
+                ns.append(c);
+            } else if (ns.length() > 0) {
+                ns.deleteCharAt(ns.length() - 1);
+            }
+        }
+        return ns.toString();
+    }
 
     public static void main(String[] args) {
-
-        String s = "hello";
-        System.out.println(s.substring(5));
-
+        System.out.println(backspaceCompare("a##c", "#a#c"));
     }
 }
-

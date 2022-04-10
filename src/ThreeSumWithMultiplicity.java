@@ -1,4 +1,4 @@
-//https://leetcode.com/problems/3sum-with-mult  iplicity/
+//https://leetcode.com/problems/3sum-with-multiplicity/
 public class ThreeSumWithMultiplicity {
 
     public static int threeSumMulti(int[] arr, int target) {
