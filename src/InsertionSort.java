@@ -1,33 +1,26 @@
 public class InsertionSort {
 
     public static void main(String[] args) {
-        int[] arr = new int[]{4,1,3,9,7};
+        int[] arr = new int[]{5,2,4,6,1,3};
 
         sort(arr);
+
+        printArray(arr);
     }
 
     public static void sort(int[] arr) {
 
+        int key;
+
         for (int i = 1; i < arr.length; i++) {
-            int key = arr[i];
-            int index = -1;
-
-            for (int j = i - 1; j >= 0; j--) {
-                if (key < arr[j]) {
-                    arr[j + 1] = arr[j];
-                    index = j;
-
-                }
+            key = arr[i];
+            int j = i - 1;
+            while (j >= 0 && key > arr[j]) {
+                arr[j + 1] = arr[j];
+                j--;
             }
-            if (index != -1)
-            {
-                arr[index] = key;
-            }
-
+            arr[j+1] = key;
         }
-
-
-
 
     }
 
