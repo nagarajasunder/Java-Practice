@@ -31,7 +31,21 @@ public class MyHashSet {
         return arr.length;
     }
 
-    private int searchElement(int low,int high,int[] arr,int search)
+    private int
+
+
+
+
+
+
+
+
+
+
+
+
+
+    searchElement(int low,int high,int[] arr,int search)
     {
         if(low < high)
         {
