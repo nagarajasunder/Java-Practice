@@ -67,9 +67,27 @@ public class MergeSort
     public static void main(String[] args) {
         int[] arr = new int[]{3,1,2,5,4};
 
-        MergeSortImpl impl = new MergeSortImpl();
-        impl.sort(arr, 0, arr.length - 1);
-        impl.printArray(arr);
+        int n = 8;
+
+        long[] odd = new long[n/2];
+        long[] even = new long[n/2];
+
+        int odd_index = 0;
+        int even_index = 0;
+
+        for(int i = 0;i<n;i++)
+        {
+            if(i%2 == 0)
+            {
+                even[even_index] = arr[i];
+                even_index++;
+            }
+            else
+            {
+                odd[odd_index] = arr[i];
+                odd_index++;
+            }
+        }
 
     }
 }

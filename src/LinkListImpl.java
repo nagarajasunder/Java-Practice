@@ -101,6 +101,7 @@ public class LinkListImpl {
     }
 
 
+
     public Node reverseLinkList(Node myhead) {
         Node prev = null, next;
         Node current = myhead;
@@ -119,30 +120,10 @@ public class LinkListImpl {
 
     }
 
-    public boolean isPalindrome(Node Myhead) {
-
-        Node reverseTemp = reverseLinkList(Myhead);
-        printLinky(Myhead);
-        printLinky(reverseTemp);
-
-
-        while (Myhead != null) {
-            if (Myhead.data == reverseTemp.data) {
-                Myhead = Myhead.next;
-                reverseTemp = reverseTemp.next;
-            } else {
-                return false;
-            }
-        }
-
-        return true;
-
-    }
-
     public void getMiddle() {
         Node slow = head, fast = head;
 
-        while (fast != null && fast.next != null) {
+        while (fast.next != null && fast.next.next != null) {
             slow = slow.next;
             fast = fast.next.next;
         }
@@ -166,17 +147,15 @@ public class LinkListImpl {
 
     public static void main(String[] args) {
         LinkListImpl llist = new LinkListImpl();
-
         llist.push(1);
-        llist.append(1, llist.head);
-        llist.append(2, llist.head);
-        llist.append(3, llist.head);
-        llist.append(3, llist.head);
-        llist.append(6, llist.head);
+        llist.append(2,llist.head);
+        llist.append(3,llist.head);
+        llist.append(4,llist.head);
+        llist.append(5,llist.head);
 
         llist.printLinky(llist.head);
-        llist.removeDuplicates();
-        llist.printLinky(llist.head);
+        llist.getMiddle();
+
 
     }
 
