@@ -1,3 +1,5 @@
+import java.util.HashSet;
+
 public class LinkListImpl {
     Node head;
 
@@ -88,18 +90,25 @@ public class LinkListImpl {
         prev.next = temp.next;
     }
 
-    public void removeDuplicates() {
-        Node temp = head;
-        int tempValue = -101;
-        while (temp != null) {
-            if (temp.data == tempValue) {
-                deleteValue(tempValue);
-            }
-            tempValue = temp.data;
-            temp = temp.next;
-        }
-    }
+    public Node removeDuplicates(Node head) {
+        HashSet<Integer> set = new HashSet<>();
 
+        Node curr = head;
+        Node prev = head;
+
+        while (curr != null) {
+            if (set.contains(curr.data)) {
+                prev.next = curr.next;
+            } else {
+                set.add(curr.data);
+                prev = curr;
+            }
+            curr = curr.next;
+        }
+
+        return head;
+
+    }
 
 
     public Node reverseLinkList(Node myhead) {
@@ -147,15 +156,14 @@ public class LinkListImpl {
 
     public static void main(String[] args) {
         LinkListImpl llist = new LinkListImpl();
-        llist.push(1);
-        llist.append(2,llist.head);
-        llist.append(3,llist.head);
-        llist.append(4,llist.head);
-        llist.append(5,llist.head);
+        llist.push(5);
+        llist.append(2, llist.head);
+        llist.append(2, llist.head);
+        llist.append(4, llist.head);
 
         llist.printLinky(llist.head);
-        llist.getMiddle();
-
+        var head = llist.removeDuplicates(llist.head);
+        llist.printLinky(head);
 
     }
 

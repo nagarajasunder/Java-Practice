@@ -11,12 +11,12 @@ public class NextPermutation {
 
     private static void printArr(int[] arr) {
         for (int i : arr) {
-            System.out.print(i + " ");
+                System.out.print(i + " ");
+            }
+            System.out.println();
         }
-        System.out.println();
-    }
-
-    public static void nextPermutation(int[] nums) {
+    
+        public static void nextPermutation(int[] nums) {
 
         int n = nums.length - 1;
 
